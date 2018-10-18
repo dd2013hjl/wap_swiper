@@ -1,6 +1,6 @@
 <template lang="pug">
 div Album
-  button(@click="goShow") Click Me
+  button(@click="goShow") Click Me111111
   router-view
 </template>
 
