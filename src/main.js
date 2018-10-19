@@ -4,10 +4,8 @@ import router from './router'
 import './registerServiceWorker'
 import './assets/styles/reset.css'
 import './assets/styles/border.css'
-import 'swiper/dist/css/swiper.css'
-import VueAwesomeSwiper from 'vue-awesome-swiper'
+import 'swiper/dist/css/swiper.min.css'
 
-Vue.use(VueAwesomeSwiper)
 Vue.config.productionTip = false
 
 new Vue({

@@ -1,45 +1,53 @@
+
  <template>
   <div id="wrap">
-    <swiper :options="swiperOption" ref="mySwiper" id="mySwiper">
-      <swiper-slide>
-        <!-- <div style=" width: 100%;height: 100%;background: url(https://cache2.vphotos.cn/bkwft01/upload/photoAlbum/paster/4362571b50164948b7659f3e80d5983e.jpeg)no-repeat;background-size: cover;"></div> -->
-        <img src="http://img.pailixiang.com/album/pailixiang/a152329377/24560519.jpg%40!lphoto" alt="" srcset="">
-      </swiper-slide>
-      <swiper-slide>
-        <img src="http://img.pailixiang.com/album/pailixiang/a153909278/34889877.jpg%40!sphoto" alt="" srcset="">
-      </swiper-slide>
-      <swiper-slide>
-        <img src="http://img.pailixiang.com/album/pailixiang/a152329377/24591356.jpg%40!lphoto" alt="" srcset="">
-      </swiper-slide>
-      <swiper-slide>
-        <img src="https://cache2.vphotos.cn/bkwft01/upload/photoAlbum/paster/4362571b50164948b7659f3e80d5983e.jpeg" alt="" srcset="">
-      </swiper-slide>
-      <swiper-slide>
-        <img src="https://cache2.vphotos.cn/bkwft01/upload/photoAlbum/paster/4362571b50164948b7659f3e80d5983e.jpeg" alt="" srcset="">
-      </swiper-slide>
-      <div class="swiper-button-prev" slot="button-prev"></div>
-      <div class="swiper-button-next" slot="button-next"></div>
-    </swiper>
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide" v-for="(item,index) in imgList" :key="index">
+          <img :src="item">
+        </div>
+      </div>
+    </div>
+    <div class="thumbs-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide" v-for="item in imgList" :key="item">
+          <img :src="item">
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import Swiper from 'swiper'
 export default {
   data () {
     return {
-      swiperOption: {
-        loop: true,
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev'
-        }
-      }
+      imgList: [
+        require('assets/image/swiperimg.jpg'),
+        require('assets/image/timg.jpg'),
+        require('assets/image/timg.jpg'),
+        require('assets/image/timg.jpg'),
+        require('assets/image/timg.jpg'),
+        require('assets/image/timg.jpg'),
+        require('assets/image/timg.jpg'),
+        require('assets/image/timg.jpg')
+      ]
     }
   },
-  computed: {
-    swiper () {
-      return this.$refs.mySwiper.swiper
-    }
+  mounted () {
+    const thumbSwiper = new Swiper('.thumbs-container', {
+      spaceBetween: 10,
+      slidesPerView: 4,
+      watchSlidesVisibility: true
+    })
+    const swiper = new Swiper('.swiper-container', {
+      spaceBetween: 10,
+      loop: true,
+      thumbs: {
+        swiper: thumbSwiper
+      }
+    })
   }
 }
 </script>
@@ -51,20 +59,31 @@ export default {
   right: 0;
   top: 0;
   bottom: 0;
-  z-index: 2;
-  background: #000;
+  z-index: 1;
+  background: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: #000;
+}
+.swiper-container{
+  display: flex;
+  align-items: center;
 }
 .swiper-wrapper{
-  align-items: center!important;
-  justify-content: center!important;
-}
+  align-items: center;
+} 
 .swiper-slide{
   overflow: hidden;
 }
 .swiper-slide img{
   width: 100%;
+}
+.thumbs-container{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 20px;
+  z-index:3;
 }
 </style>
