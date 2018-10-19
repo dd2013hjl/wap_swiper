@@ -1,59 +1,80 @@
-
 <template>
   <div id="wrap">
     <div class="swiper-container">
       <div class="swiper-wrapper">
-        <div class="swiper-slide" v-for="(item,index) in imgList" :key="index">
-          <img :src="item">
-        </div>
       </div>
     </div>
     <div class="thumbs-container">
       <div class="swiper-wrapper">
-        <div class="swiper-slide" v-for="(item,index) in imgList" :key="index">
-          <!-- <img :src="item"> -->
-          <div class="imgitem" :style="{backgroundImage: 'url('+item+')'}"></div>
-        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Swiper from "swiper";
+import Swiper from 'swiper'
+import axios from 'axios'
+
+let imgSwiper = null
+let thumbSwiper = null
 
 export default {
-  data() {
+  data () {
     return {
-      imgList: [
-        require("assets/image/swiperimg.jpg"),
-        require("assets/image/timg.jpg"),
-        require("assets/image/timg.jpg"),
-        require("assets/image/timg.jpg"),
-        require("assets/image/timg.jpg"),
-        require("assets/image/timg.jpg"),
-        require("assets/image/timg.jpg"),
-        require("assets/image/timg.jpg")
-      ]
-    };
+      imgList: []
+    }
   },
+  created () {
+    this.getPhoList()
+  },
+  methods: {
+    async getPhoList () {
+      let list = await axios.get('/api/pho')
+      this.imgList = list.data.list
 
-  mounted() {
-    const thumbSwiper = new Swiper(".thumbs-container", {
-      spaceBetween: 10,
-      slidesPerView: 4,
-      watchSlidesVisibility: true
-    });
-
-    const swiper = new Swiper(".swiper-container", {
-      spaceBetween: 10,
-      loop: true,
-      thumbs: {
-        swiper: thumbSwiper
-      }
-    });
+      thumbSwiper = this.initThumbSwiper(0, this.imgList)
+      imgSwiper = this.initSwiper(0, this.imgList)
+    },
+    initThumbSwiper (index, list) {
+      const thumbSwiper = new Swiper('.thumbs-container', {
+        slidesPerView: 8, // 设置slider容器能够同时显示的slides数量
+        spaceBetween: 4, // 在slide之间设置距离
+        initialSlide: index,
+        centeredSlides: true,
+        slideToClickedSlide: true,
+        watchSlidesVisibility: true,
+        virtual: {
+          renderSlide: (item, index) => {
+            var tpl = `<div class="swiper-slide"><div style="background:url('${item.thumb}')  no-repeat"></div></div>`
+            return tpl
+          },
+          slides: list
+        }
+      })
+      return thumbSwiper
+    },
+    initSwiper (index, list) {
+      const imgSwiper = new Swiper('.swiper-container', {
+        observer: true,
+        observeParents: true,
+        centeredSlides: true,
+        spaceBetween: 20,
+        initialSlide: index,
+        virtual: {
+          renderSlide: (item, index) => {
+            var tpl = `<div class="swiper-slide"><div style="background:url('${item.src}') no-repeat"></div></div>`
+            return tpl
+          },
+          slides: list
+        },
+        thumbs: {
+          swiper: thumbSwiper
+        }
+      })
+      return imgSwiper
+    }
   }
-};
+}
 </script>
 
 <style scoped>
@@ -82,7 +103,6 @@ export default {
 
 .swiper-slide {
   overflow: hidden;
-
 }
 
 .swiper-slide img {
@@ -111,9 +131,8 @@ export default {
   margin-right: 5px !important;
   width: 80px !important;
 }
-.thumbs-container .swiper-slide-active{
+.thumbs-container .swiper-slide-active {
   box-sizing: border-box;
   border: 1px solid #fff;
-
 }
 </style>
