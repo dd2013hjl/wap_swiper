@@ -10,8 +10,9 @@
     </div>
     <div class="thumbs-container">
       <div class="swiper-wrapper">
-        <div class="swiper-slide" v-for="item in imgList" :key="item">
-          <img :src="item">
+        <div class="swiper-slide" v-for="(item,index) in imgList" :key="index">
+          <!-- <img :src="item"> -->
+          <div class="imgitem" :style="{backgroundImage: 'url('+item+')'}"></div>
         </div>
       </div>
     </div>
@@ -19,38 +20,40 @@
 </template>
 
 <script>
-import Swiper from 'swiper'
+import Swiper from "swiper";
+
 export default {
-  data () {
+  data() {
     return {
       imgList: [
-        require('assets/image/pum/1.jpg'),
-        require('assets/image/pum/2.jpg'),
-        require('assets/image/pum/3.jpg'),
-        require('assets/image/pum/4.jpg'),
-        require('assets/image/pum/5.jpg'),
-        require('assets/image/pum/6.jpg'),
-        require('assets/image/pum/7.jpg'),
-        require('assets/image/pum/8.jpg')
+        require("assets/image/swiperimg.jpg"),
+        require("assets/image/timg.jpg"),
+        require("assets/image/timg.jpg"),
+        require("assets/image/timg.jpg"),
+        require("assets/image/timg.jpg"),
+        require("assets/image/timg.jpg"),
+        require("assets/image/timg.jpg"),
+        require("assets/image/timg.jpg")
       ]
-    }
+    };
   },
-  mounted () {
-    const thumbSwiper = new Swiper('.thumbs-container', {
+
+  mounted() {
+    const thumbSwiper = new Swiper(".thumbs-container", {
       spaceBetween: 10,
       slidesPerView: 4,
       watchSlidesVisibility: true
-    })
-    const swiper = new Swiper('.swiper-container', {
-      loop: true,
+    });
+
+    const swiper = new Swiper(".swiper-container", {
       spaceBetween: 10,
+      loop: true,
       thumbs: {
-        swiper: thumbSwiper,
-        slideThumbActiveClass: 'my-slide-thumb-active'
+        swiper: thumbSwiper
       }
-    })
+    });
   }
-}
+};
 </script>
 
 <style scoped>
@@ -67,24 +70,50 @@ export default {
   justify-content: center;
   background: #000;
 }
+
 .swiper-container {
   display: flex;
   align-items: center;
 }
+
 .swiper-wrapper {
   align-items: center;
 }
+
 .swiper-slide {
   overflow: hidden;
+
 }
+
 .swiper-slide img {
   width: 100%;
 }
+
 .thumbs-container {
   position: fixed;
   left: 0;
   right: 0;
   bottom: 20px;
   z-index: 3;
+}
+
+.thumbs-container .imgitem {
+  width: 80px;
+  height: 60px;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
+
+.thumbs-container .swiper-slide,
+.thumbs-container .swiper-slide-visible,
+.thumbs-container .swiper-slide-active {
+  margin-right: 5px !important;
+  width: 80px !important;
+}
+.thumbs-container .swiper-slide-active{
+  box-sizing: border-box;
+  border: 1px solid #fff;
+
 }
 </style>
