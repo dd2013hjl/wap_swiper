@@ -1,7 +1,7 @@
 <template  lang="pug">
   #app
     router-view
-    tab(@tabChange="tabSwitch" :current="current")
+    //- tab(@tabChange="tabSwitch" :current="current")
 </template>
 
 <script>
@@ -11,15 +11,15 @@ export default {
     return {
       current: 0
     }
-  },
-  methods: {
-    tabSwitch (index) {
-      this.current = index
-    }
-  },
-  components: {
-    Tab
   }
+  // methods: {
+  //   tabSwitch (index) {
+  //     this.current = index
+  //   }
+  // },
+  // components: {
+  //   Tab
+  // }
 }
 </script>
 
