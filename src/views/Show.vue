@@ -82,6 +82,7 @@ export default {
 
 .swiper-slide {
   overflow: hidden;
+
 }
 
 .swiper-slide img {
@@ -113,5 +114,6 @@ export default {
 .thumbs-container .swiper-slide-active{
   box-sizing: border-box;
   border: 1px solid #fff;
+
 }
 </style>
