@@ -14,26 +14,6 @@
         </div>
       </div>
     </div>
-    <swiper :options="swiperOption" ref="mySwiper" id="mySwiper">
-      <swiper-slide>
-        <!-- <div style=" width: 100%;height: 100%;background: url(https://cache2.vphotos.cn/bkwft01/upload/photoAlbum/paster/4362571b50164948b7659f3e80d5983e.jpeg)no-repeat;background-size: cover;"></div> -->
-        <img src="http://img.pailixiang.com/album/pailixiang/a152329377/24560519.jpg%40!lphoto" alt="" srcset="">
-      </swiper-slide>
-      <swiper-slide>
-        <img src="http://img.pailixiang.com/album/pailixiang/a153909278/34889877.jpg%40!sphoto" alt="" srcset="">
-      </swiper-slide>
-      <swiper-slide>
-        <img src="http://img.pailixiang.com/album/pailixiang/a152329377/24591356.jpg%40!lphoto" alt="" srcset="">
-      </swiper-slide>
-      <swiper-slide>
-        <img src="https://cache2.vphotos.cn/bkwft01/upload/photoAlbum/paster/4362571b50164948b7659f3e80d5983e.jpeg" alt="" srcset="">
-      </swiper-slide>
-      <swiper-slide>
-        <img src="https://cache2.vphotos.cn/bkwft01/upload/photoAlbum/paster/4362571b50164948b7659f3e80d5983e.jpeg" alt="" srcset="">
-      </swiper-slide>
-      <div class="swiper-button-prev" slot="button-prev"></div>
-      <div class="swiper-button-next" slot="button-next"></div>
-    </swiper>
   </div>
 </template>
 
@@ -80,6 +60,9 @@ export default {
   top: 0;
   bottom: 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Lijin
   z-index: 1;
 }
 .swiper-container {
@@ -89,6 +72,7 @@ export default {
 .swiper-slide {
   width: 100%;
   height: 400px;
+<<<<<<< HEAD
 =======
   z-index: 2;
   background: #000;
@@ -106,5 +90,7 @@ export default {
 .swiper-slide img{
   width: 100%;
 >>>>>>> efd484b59fcf8485e7151cbd763581b75601d57d
+=======
+>>>>>>> Lijin
 }
 </style>
