@@ -88,7 +88,8 @@ export default {
           slides: list
         },
         thumbs: {
-          swiper: thumbSwiper
+          swiper: thumbSwiper,
+          slideThumbActiveClass: 'thumb_active',
         }
       });
       return imgSwiper;
@@ -170,5 +171,9 @@ export default {
   width: 12px;
   height: 12px;
   margin-bottom: 4px;
+}
+.thumb_active{
+  box-sizing: border-box;
+  border: 1px solid #fff;
 }
 </style>

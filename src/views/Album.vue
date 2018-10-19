@@ -196,7 +196,7 @@ export default {
   width: 100%;
   height: 100%;
   background: url(https://cache2.vphotos.cn/bkwft01/upload/photoAlbum/paster/4362571b50164948b7659f3e80d5983e.jpeg)
-    no-repeat;
+    no-repeat center center;
   background-size: cover;
 }
 .imglist .third_row .imgdiv:nth-of-type(3n) {
