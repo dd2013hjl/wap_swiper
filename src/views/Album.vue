@@ -1,9 +1,4 @@
 <template lang="html">
-<!-- //- div#album Album
-//-   button(@click="goShow") Click Me
-//-   div Sfdfdf
-//-   router-view
-div#album -->
   <div id="album">
     <div class="topbanner">
         <img :src="topimg" />
