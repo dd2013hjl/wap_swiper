@@ -21,6 +21,11 @@ export default new Router({
     }]
   },
   {
+    path: '/album/show',
+    component: () =>
+        import('views/Show')
+  },
+  {
     path: '/appointment',
     component: () =>
         import('views/Appointment')

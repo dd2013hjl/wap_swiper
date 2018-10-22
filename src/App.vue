@@ -12,14 +12,6 @@ export default {
       current: 0
     }
   }
-  // methods: {
-  //   tabSwitch (index) {
-  //     this.current = index
-  //   }
-  // },
-  // components: {
-  //   Tab
-  // }
 }
 </script>
 
